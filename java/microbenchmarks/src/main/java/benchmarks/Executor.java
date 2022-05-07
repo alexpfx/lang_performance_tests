@@ -54,8 +54,7 @@ public abstract class Executor<T extends Task<List<Integer>, Integer>, G extends
         Instant start = Instant.now();
 
         final List<Integer> data = generator.genData();
-        Collections.shuffle(data);
-
+        
         List<Integer> trash = new ArrayList<>();
         List<Duration> times = new ArrayList<>();
         for (int i = 0; i < executions; i++) {
