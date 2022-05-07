@@ -27,7 +27,7 @@ public class Main {
 
         final DefaultExecutor streamFilter = DefaultExecutor.newDefaultExecutor("t2 stream filter",
                 (numbers, index) -> {
-                    List<Integer> l = numbers.stream().filter(n -> n > 10000 && n < 10005).collect(Collectors.toList());
+                    List<Integer> l = numbers.stream().filter(n -> n % 2 == 0).collect(Collectors.toList());
                     return l.size();
                 });
 
@@ -35,7 +35,7 @@ public class Main {
                 (numbers, index) -> {
                     List<Integer> l = new ArrayList<>();
                     for (Integer n : numbers) {
-                        if (n > 10000 && n < 10005) {
+                        if (n % 2 == 0) {
                             l.add(n);
                         }
                     }
