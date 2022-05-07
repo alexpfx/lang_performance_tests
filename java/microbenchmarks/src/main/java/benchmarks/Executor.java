@@ -63,7 +63,6 @@ public abstract class Executor<T extends Task<List<Integer>, Integer>, G extends
             Instant b = Instant.now();
             trash.add(task.process(data, i));
             times.add(Duration.between(b, Instant.now()));
-            System.out.println(trash.get(0));
         }
         s.push(trash.size());
         Instant end = Instant.now();
