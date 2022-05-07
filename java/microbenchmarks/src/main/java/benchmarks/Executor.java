@@ -48,7 +48,7 @@ public abstract class Executor<T extends Task<List<Integer>, Integer>, G extends
     }
 
     public Summary execute() {
-        int executions = 3;
+        int executions = 2;
         Summary s = new Summary();
         s.title = testName;
         
