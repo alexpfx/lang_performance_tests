@@ -1,7 +1,9 @@
 package org.example;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -42,10 +44,23 @@ public class Main {
                     return l.size();
                 });
 
-        tests.add(normalFilter);
-        tests.add(streamFilter);
-        tests.add(streamFilter);
-        tests.add(normalFilter);
+        final DefaultExecutor sumBigDecimalNormal = DefaultExecutor.newSmallNumbersDefaultExecutor("t1 sum normal", (intlist, index) -> {
+            BigDecimal sum = BigDecimal.ZERO;
+            for (Integer n : intlist) {
+                sum = sum.add(BigDecimal.valueOf(n));
+            }
+
+            return sum.intValue();
+        });
+        final DefaultExecutor sumMapReduce = DefaultExecutor.newSmallNumbersDefaultExecutor("t2 sum map reduce", new BiFunction<List<Integer>, Integer, Integer>() {
+            @Override
+            public Integer apply(List<Integer> integers, Integer integer) {
+                return integers.stream().map(BigDecimal::valueOf).reduce(BigDecimal.ZERO, BigDecimal::add).intValue();
+            }
+        });
+        tests.add(sumMapReduce);
+        tests.add(sumBigDecimalNormal);
+
 
     }
 

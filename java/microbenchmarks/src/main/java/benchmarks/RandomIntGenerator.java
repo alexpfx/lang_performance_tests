@@ -12,6 +12,9 @@ public class RandomIntGenerator implements Generator<List<Integer>> {
     public static RandomIntGenerator tenMillions() {
         return new RandomIntGenerator(10_000_000, 1000_000_000);
     }
+    public static RandomIntGenerator tenMillionSmallNumbers() {
+        return new RandomIntGenerator(10_000_000, 100);
+    }
 
     private RandomIntGenerator(int count, int max) {
         this.count = count;

@@ -9,6 +9,10 @@ public class DefaultExecutor extends Executor<BaseTask, RandomIntGenerator> {
         return new DefaultExecutor(name, new BaseTask(runner), RandomIntGenerator.tenMillions());
     }
 
+    public static DefaultExecutor newSmallNumbersDefaultExecutor(String name, BiFunction<List<Integer>, Integer, Integer> runner) {
+        return new DefaultExecutor(name, new BaseTask(runner), RandomIntGenerator.tenMillionSmallNumbers());
+    }
+
     private DefaultExecutor(String testName, BaseTask task, RandomIntGenerator generator) {
         super(testName, task, generator);
     }
