@@ -44,23 +44,29 @@ public class Main {
                     return l.size();
                 });
 
-        final DefaultExecutor sumBigDecimalNormal = DefaultExecutor.newSmallNumbersDefaultExecutor("t1 sum normal", (intlist, index) -> {
-            BigDecimal sum = BigDecimal.ZERO;
-            for (Integer n : intlist) {
-                sum = sum.add(BigDecimal.valueOf(n));
-            }
+        final DefaultExecutor sumBigDecimalNormal = DefaultExecutor.newSmallNumbersDefaultExecutor("t1 sum normal",
+                (intlist, index) -> {
+                    BigDecimal sum = BigDecimal.ZERO;
+                    for (Integer n : intlist) {
+                        if (n % 2 == 0) {
+                            sum = sum.add(BigDecimal.valueOf(n));
+                        }
+                    }
 
-            return sum.intValue();
-        });
-        final DefaultExecutor sumMapReduce = DefaultExecutor.newSmallNumbersDefaultExecutor("t2 sum map reduce", new BiFunction<List<Integer>, Integer, Integer>() {
-            @Override
-            public Integer apply(List<Integer> integers, Integer integer) {
-                return integers.stream().map(BigDecimal::valueOf).reduce(BigDecimal.ZERO, BigDecimal::add).intValue();
-            }
-        });
+                    return sum.intValue();
+                });
+        final DefaultExecutor sumMapReduce = DefaultExecutor.newSmallNumbersDefaultExecutor("t2 sum map reduce",
+                new BiFunction<List<Integer>, Integer, Integer>() {
+                    @Override
+                    public Integer apply(List<Integer> integers, Integer integer) {
+                        return integers.stream()
+                                .filter(n -> n % 2 == 0)
+                                .map(BigDecimal::valueOf).reduce(BigDecimal.ZERO, BigDecimal::add).intValue();
+                    }
+                });
+
         tests.add(sumMapReduce);
         tests.add(sumBigDecimalNormal);
-
 
     }
 
