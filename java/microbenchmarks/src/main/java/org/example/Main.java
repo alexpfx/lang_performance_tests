@@ -42,10 +42,11 @@ public class Main {
                     return l.size();
                 });
 
-                
+        tests.add(normalFilter);
+        tests.add(streamFilter);
         tests.add(streamFilter);
         tests.add(normalFilter);
-    
+
     }
 
     public void execute() {
