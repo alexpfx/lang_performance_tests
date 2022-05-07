@@ -3,9 +3,11 @@ package benchmarks;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class RandomIntGenerator implements Generator<List<Integer>> {
     private SecureRandom secureRandom = new SecureRandom();
+    private Random pseudoRandom = new Random();
     private int count;
     private int max;
 
@@ -26,7 +28,8 @@ public class RandomIntGenerator implements Generator<List<Integer>> {
     public List<Integer> genData() {
         List<Integer> l = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            l.add(secureRandom.nextInt(max));
+            // l.add(secureRandom.nextInt(max));
+            l.add(pseudoRandom.nextInt(max));
         }
         return l;
     }
