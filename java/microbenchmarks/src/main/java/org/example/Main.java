@@ -31,7 +31,7 @@ public class Main {
                     return l.size();
                 });
 
-        final DefaultExecutor normalFilter = DefaultExecutor.newDefaultExecutor("t2 stream filter",
+        final DefaultExecutor normalFilter = DefaultExecutor.newDefaultExecutor("t3 normal filter",
                 (numbers, index) -> {
                     List<Integer> l = new ArrayList<>();
                     for (Integer n : numbers) {
@@ -42,9 +42,10 @@ public class Main {
                     return l.size();
                 });
 
-        tests.add(streamSort);
+                
         tests.add(streamFilter);
         tests.add(normalFilter);
+    
     }
 
     public void execute() {
