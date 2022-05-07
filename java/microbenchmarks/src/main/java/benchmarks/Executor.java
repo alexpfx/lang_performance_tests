@@ -22,7 +22,6 @@ public abstract class Executor<T extends Task<List<Integer>, Integer>, G extends
         public String toString() {
             return "Summary{" +
                     "title='" + title + '\'' +
-                    ", worst=" + worst +
                     ", best=" + best +
                     ", total=" + total +
                     '}';
@@ -30,7 +29,6 @@ public abstract class Executor<T extends Task<List<Integer>, Integer>, G extends
 
         private String title;
 
-        private Duration worst;
         private Duration best;
 
         private Duration total;
@@ -51,12 +49,12 @@ public abstract class Executor<T extends Task<List<Integer>, Integer>, G extends
         int executions = 2;
         Summary s = new Summary();
         s.title = testName;
-        
+
         Instant start = Instant.now();
-        System.out.println("gen data");
+        System.out.print("gen data ");
         final List<Integer> data = generator.genData();
         System.out.println("data generated");
-        
+
         List<Integer> trash = new ArrayList<>();
         List<Duration> times = new ArrayList<>();
         for (int i = 0; i < executions; i++) {
@@ -69,12 +67,9 @@ public abstract class Executor<T extends Task<List<Integer>, Integer>, G extends
         s.total = Duration.between(start, end);
 
         Collections.sort(times);
-        s.worst = times.get(times.size() - 1);
+
         s.best = times.get(0);
-
-
         return s;
     }
-
 
 }
