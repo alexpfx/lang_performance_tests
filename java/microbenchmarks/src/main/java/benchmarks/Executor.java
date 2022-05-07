@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Executor<T extends Task<List<Integer>, Integer>, G extends Generator<List<Integer>>> {
+public abstract class Executor<T extends Task<List<Integer>, Integer>, G extends Generator<List<Integer>>> {
     private final String testName;
     private T task;
     private G generator;
