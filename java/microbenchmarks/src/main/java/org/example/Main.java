@@ -67,6 +67,11 @@ public class Main {
 
         tests.add(sumMapReduce);
         tests.add(sumBigDecimalNormal);
+        tests.add(sumBigDecimalNormal);
+        tests.add(sumMapReduce);
+        tests.add(sumMapReduce);
+        tests.add(sumBigDecimalNormal);
+
 
     }
 

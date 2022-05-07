@@ -51,6 +51,7 @@ public abstract class Executor<T extends Task<List<Integer>, Integer>, G extends
         int executions = 3;
         Summary s = new Summary();
         s.title = testName;
+        
         Instant start = Instant.now();
         System.out.println("gen data");
         final List<Integer> data = generator.genData();
